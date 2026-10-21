@@ -1,87 +1,153 @@
 'use client';
 
+import { useMemo } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { OrnateCrossIcon, HeartFlourish } from '@/components/icons/WeddingIcons';
-import { PHOTOS } from '@/lib/wedding';
+import { COUPLE, PHOTOS } from '@/lib/wedding';
+
+const PETAL_COLORS = ['#F7D6DE', '#A6D5F7', '#CDEDE1'];
+
+const reveal = (inView: boolean, delay: number, y = 24) => ({
+  initial: { opacity: 0, y },
+  animate: inView ? { opacity: 1, y: 0 } : {},
+  transition: { duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
 
 export default function HeroSection() {
   const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true });
 
+  const petals = useMemo(
+    () =>
+      Array.from({ length: 14 }).map((_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        delay: Math.random() * 8,
+        duration: 14 + Math.random() * 10,
+        size: 8 + Math.random() * 10,
+        drift: Math.random() * 80 - 40,
+        color: PETAL_COLORS[i % PETAL_COLORS.length],
+      })),
+    []
+  );
+
   return (
     <section
       ref={ref}
-      className="relative min-h-[100svh] w-full overflow-hidden"
+      className="relative h-[100svh] w-full overflow-hidden bg-[linear-gradient(135deg,#F7D6DE_0%,#FFFFFF_45%,#A6D5F7_100%)] md:h-auto md:min-h-[100svh]"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url("${PHOTOS.hero}")`, backgroundPosition: 'center 30%' }}
-      />
-
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.72)_0%,rgba(247,214,222,0.7)_55%,rgba(255,255,255,0.88)_100%)]" />
-
-      <div className="pointer-events-none absolute inset-0 opacity-[0.16] mix-blend-multiply">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(166,213,247,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(166,213,247,0.25) 1px, transparent 1px)',
-            backgroundSize: '52px 52px',
-          }}
+      {/* Couple photo as the background, with a slow gentle zoom */}
+      <motion.div
+        className="absolute inset-x-0 top-0 h-[58svh] md:inset-0 md:h-auto"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: [1.08, 1, 1.08] }}
+        transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <Image
+          src={PHOTOS.hero}
+          alt={`${COUPLE.bride} and ${COUPLE.groom}`}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_32%] md:object-[center_30%]"
         />
+      </motion.div>
+
+      {/* Pastel veils: clear over the couple, soft behind the text */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_36%,rgba(255,255,255,0.9)_56%,rgba(247,214,222,0.95)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.1)_35%,rgba(255,255,255,0.82)_58%,rgba(247,214,222,0.9)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(166,213,247,0.55),transparent_55%)]" />
+
+      {/* Soft pastel glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-32 top-1/3 h-[28rem] w-[28rem] rounded-full bg-[#CDEDE1] opacity-60 blur-[110px]" />
+        <div className="absolute -right-24 -top-24 h-[24rem] w-[24rem] rounded-full bg-[#FFFFFF] opacity-80 blur-[90px]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col items-center justify-center px-4 pb-16 pt-28 text-center sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#F7D6DE]/55 bg-white/60 px-5 py-2 backdrop-blur-sm"
-        >
-          <OrnateCrossIcon className="h-5 w-5 text-[#000000]" />
-          <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#000000] sm:text-xs">
-            Holy Matrimony
-          </span>
-          <OrnateCrossIcon className="h-5 w-5 text-[#000000]" />
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1.1, delay: 0.1 }}
-          className="font-serif text-4xl font-light leading-tight tracking-[0.08em] text-[#000000] sm:text-6xl md:text-7xl lg:text-8xl"
-        >
-          NUWANI <span className="text-[#000000]">&amp;</span> BHARATHA
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.25 }}
-          className="mt-5 max-w-3xl text-sm leading-relaxed text-[#000000] sm:text-base md:text-lg"
-        >
-          With grateful hearts before God, we invite you to witness our blessed marriage ceremony and celebrate this joyful beginning with our families.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="mt-8 rounded-3xl border border-[#F7D6DE]/45 bg-white/60 px-6 py-5 backdrop-blur-sm sm:px-10"
-        >
-          <p className="text-xs uppercase tracking-[0.28em] text-[#000000]">Wedding Date</p>
-          <p className="mt-2 font-serif text-2xl text-[#000000] sm:text-3xl">11th December 2026</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.55 }}
-          className="mt-8 flex items-center gap-3 text-[#000000]"
-        >
-          <HeartFlourish className="h-7 w-56" />
-        </motion.div>
+      {/* Drifting petals */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {petals.map((p) => (
+          <motion.span
+            key={p.id}
+            className="absolute -top-10 block"
+            style={{
+              left: p.left,
+              width: p.size,
+              height: p.size * 1.4,
+              background: p.color,
+              borderRadius: '70% 30% 70% 30% / 70% 30% 70% 30%',
+              boxShadow: '0 0 8px rgba(255,255,255,0.9)',
+            }}
+            animate={{ y: ['0vh', '110vh'], x: [0, p.drift, 0], rotate: [0, 180, 360], opacity: [0, 0.9, 0] }}
+            transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: 'linear' }}
+          />
+        ))}
       </div>
+
+      {/* Fine double frame */}
+      <div className="pointer-events-none absolute inset-3 rounded-[2rem] border border-[#FFFFFF] sm:inset-5" />
+      <div className="pointer-events-none absolute inset-5 rounded-[1.7rem] border border-[#A6D5F7] sm:inset-8" />
+
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-8 pb-12 md:min-h-[100svh] md:flex-row md:items-center md:justify-end md:px-12 md:py-16">
+        {/* Invitation text */}
+        <div className="flex flex-col items-center text-center md:w-1/2">
+          <motion.div {...reveal(inView, 0.2)} className="relative mb-5 hidden h-16 w-16 md:block md:h-20 md:w-20">
+            <Image src="/logo.png" alt="" fill sizes="80px" className="object-contain" />
+          </motion.div>
+
+          <motion.div
+            {...reveal(inView, 0.3)}
+            className="inline-flex items-center gap-2 rounded-full border border-[#FFFFFF] bg-[#FFFFFF]/70 px-5 py-2 shadow-[0_8px_24px_rgba(247,214,222,0.6)] backdrop-blur-sm"
+          >
+            <OrnateCrossIcon className="h-4 w-4 text-[#000000]" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#000000] sm:text-xs">
+              Wedding Invitation
+            </span>
+            <OrnateCrossIcon className="h-4 w-4 text-[#000000]" />
+          </motion.div>
+
+          <motion.p {...reveal(inView, 0.4)} className="mt-7 hidden text-[11px] uppercase tracking-[0.35em] text-[#000000] md:block">
+            Together with their families
+          </motion.p>
+
+          <motion.h1 {...reveal(inView, 0.5, 30)} className="mt-3 font-script text-6xl leading-[1.05] text-[#000000] sm:text-7xl md:mt-3 md:text-7xl lg:text-8xl">
+            {COUPLE.bride}
+          </motion.h1>
+          <motion.div {...reveal(inView, 0.6)} className="my-1 flex items-center gap-4">
+            <span className="h-px w-14 bg-gradient-to-r from-transparent to-[#000000]/50" />
+            <span className="font-serif text-2xl italic text-[#000000] md:text-3xl">&amp;</span>
+            <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#000000]/50" />
+          </motion.div>
+          <motion.h1 {...reveal(inView, 0.7, 30)} className="font-script text-6xl leading-[1.05] text-[#000000] sm:text-7xl md:text-7xl lg:text-8xl">
+            {COUPLE.groom}
+          </motion.h1>
+
+          <motion.p {...reveal(inView, 0.85)} className="mt-6 hidden max-w-md text-sm leading-relaxed text-[#000000] sm:text-base md:block">
+            With grateful hearts before God, we invite you to celebrate the beginning of our forever.
+          </motion.p>
+
+          {/* Date row */}
+          <motion.div
+            {...reveal(inView, 1)}
+            className="mt-5 grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-y border-[#000000]/20 py-3 sm:gap-6 md:mt-8 md:py-4"
+          >
+            <span className="text-right text-[11px] font-semibold uppercase tracking-[0.3em] text-[#000000]">Friday</span>
+            <span className="rounded-2xl bg-[#FFFFFF]/80 px-4 py-1.5 font-serif text-3xl leading-none md:px-5 md:py-2 md:text-4xl text-[#000000] shadow-[0_8px_20px_rgba(166,213,247,0.5)]">
+              11
+            </span>
+            <span className="text-left text-[11px] font-semibold uppercase tracking-[0.3em] text-[#000000]">Dec 2026</span>
+          </motion.div>
+
+          <motion.p {...reveal(inView, 1.1)} className="mt-4 text-[10px] uppercase tracking-[0.2em] text-[#000000] md:mt-5 md:text-xs md:tracking-[0.22em]">
+            St. Anthony&apos;s Church · Cinnamon Grand Colombo
+          </motion.p>
+
+          <motion.div {...reveal(inView, 1.2)} className="mt-6 hidden md:block">
+            <HeartFlourish className="h-7 w-56 text-[#000000]" />
+          </motion.div>
+        </div>
+      </div>
+
     </section>
   );
 }
