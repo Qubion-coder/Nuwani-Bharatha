@@ -2,17 +2,19 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { HEADING_CLASS, UnderlinedWord } from '@/components/UnderlinedWord';
 import Image from 'next/image';
 import { Sparkles, Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { PHOTOS } from '@/lib/wedding';
 
 const galleryItems = [
-  { src: '/images/IMG_2521.JPG.jpeg', width: 'w-[190px] sm:w-[260px] md:w-[380px]', height: 'h-[350px] md:h-[520px]', yOffset: 'translate-y-0' },
-  { src: '/images/IMG_2522.JPG.jpeg', width: 'w-[160px] sm:w-[220px] md:w-[300px]', height: 'h-[300px] md:h-[420px]', yOffset: 'translate-y-12' },
-  { src: '/images/IMG_2523.JPG.jpeg', width: 'w-[200px] sm:w-[280px] md:w-[420px]', height: 'h-[380px] md:h-[550px]', yOffset: '-translate-y-8' },
-  { src: '/images/IMG_2524.JPG.jpeg', width: 'w-[170px] sm:w-[240px] md:w-[340px]', height: 'h-[320px] md:h-[480px]', yOffset: 'translate-y-6' },
-  { src: '/images/IMG_2525.JPG.jpeg', width: 'w-[210px] sm:w-[300px] md:w-[440px]', height: 'h-[400px] md:h-[580px]', yOffset: '-translate-y-12' },
-  { src: '/images/IMG_2526.JPG.jpeg', width: 'w-[180px] sm:w-[250px] md:w-[380px]', height: 'h-[360px] md:h-[500px]', yOffset: 'translate-y-4' },
+  { src: PHOTOS.gallery[0], width: 'w-[190px] sm:w-[260px] md:w-[380px]', height: 'h-[350px] md:h-[520px]', yOffset: 'translate-y-0' },
+  { src: PHOTOS.gallery[1], width: 'w-[160px] sm:w-[220px] md:w-[300px]', height: 'h-[300px] md:h-[420px]', yOffset: 'translate-y-12' },
+  { src: PHOTOS.gallery[2], width: 'w-[200px] sm:w-[280px] md:w-[420px]', height: 'h-[380px] md:h-[550px]', yOffset: '-translate-y-8' },
+  { src: PHOTOS.gallery[3], width: 'w-[170px] sm:w-[240px] md:w-[340px]', height: 'h-[320px] md:h-[480px]', yOffset: 'translate-y-6' },
+  { src: PHOTOS.gallery[4], width: 'w-[210px] sm:w-[300px] md:w-[440px]', height: 'h-[400px] md:h-[580px]', yOffset: '-translate-y-12' },
+  { src: PHOTOS.gallery[1], width: 'w-[180px] sm:w-[250px] md:w-[380px]', height: 'h-[360px] md:h-[500px]', yOffset: 'translate-y-4' },
 ];
 
 // Duplicate items multiple times to ensure a seamless infinite scroll
@@ -33,16 +35,16 @@ export default function GallerySection() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#1a0408_0%,#4a0f18_50%,#2c0610_100%)] py-24 md:py-32"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#F7D6DE_0%,#FFFFFF_50%,#F7D6DE_100%)] py-24 md:py-32"
     >
       {/* Background Ornaments */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-[#C9A227]/5 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-[600px] w-[600px] rounded-full bg-[#d81b3f]/10 blur-[100px]" />
+        <div className="absolute left-1/2 top-0 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-[#A6D5F7]/5 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-[600px] w-[600px] rounded-full bg-[#A6D5F7]/10 blur-[100px]" />
 
         {/* Subtle grid pattern for premium modern feel */}
-        <div className="absolute inset-0 opacity-[0.03] mix-blend-screen"
-          style={{ backgroundImage: `linear-gradient(rgba(201,162,39,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,162,39,1) 1px, transparent 1px)`, backgroundSize: '60px 60px' }} />
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
+          style={{ backgroundImage: `linear-gradient(rgba(166,213,247,1) 1px, transparent 1px), linear-gradient(90deg, rgba(166,213,247,1) 1px, transparent 1px)`, backgroundSize: '60px 60px' }} />
       </div>
 
       <div className="relative z-10 mx-auto mb-16 max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -51,21 +53,21 @@ export default function GallerySection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#C9A227]/30 bg-[#2c0710]/50 px-5 py-2 backdrop-blur-md">
-            <Sparkles className="h-4 w-4 text-[#C9A227]" />
-            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#C9A227]">
+          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#A6D5F7]/30 bg-[#F7D6DE]/50 px-5 py-2 backdrop-blur-md">
+            <Sparkles className="h-4 w-4 text-[#000000]" />
+            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#000000]">
               Without Words
             </span>
           </div>
 
-          <h2 className="font-serif text-5xl font-light tracking-wide text-[#f5e6c8] md:text-7xl">
-            Our <span className="italic text-[#C9A227]">Gallery</span>
+          <h2 className={HEADING_CLASS}>
+            Our <UnderlinedWord inView={inView}>Gallery</UnderlinedWord>
           </h2>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <span className="h-px w-16 bg-gradient-to-r from-transparent to-[#C9A227]/60" />
-            <Heart size={14} className="text-[#C9A227] fill-[#C9A227]/20" />
-            <span className="h-px w-16 bg-gradient-to-l from-transparent to-[#C9A227]/60" />
+            <span className="h-px w-16 bg-gradient-to-r from-transparent to-[#A6D5F7]/60" />
+            <Heart size={14} className="text-[#000000] fill-[#A6D5F7]/20" />
+            <span className="h-px w-16 bg-gradient-to-l from-transparent to-[#A6D5F7]/60" />
           </div>
         </motion.div>
       </div>
@@ -74,8 +76,8 @@ export default function GallerySection() {
       <div className="relative mt-20 flex w-full overflow-hidden py-10">
 
         {/* Left and Right Fade Overlays */}
-        <div className="absolute left-0 top-0 z-20 h-full w-[10%] bg-gradient-to-r from-[#1a0408] to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 z-20 h-full w-[10%] bg-gradient-to-l from-[#1a0408] to-transparent pointer-events-none" />
+        <div className="absolute left-0 top-0 z-20 h-full w-[10%] bg-gradient-to-r from-[#FFFFFF] to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 z-20 h-full w-[10%] bg-gradient-to-l from-[#FFFFFF] to-transparent pointer-events-none" />
 
         {mounted && (
           <motion.div
@@ -91,12 +93,12 @@ export default function GallerySection() {
             {duplicatedItems.map((item, index) => (
               <motion.div
                 key={index}
-                className={`group relative shrink-0 overflow-hidden rounded-[2.5rem] border border-[#C9A227]/20 bg-[#1a0408] shadow-[0_20px_50px_rgba(0,0,0,0.5)] ${item.width} ${item.height} ${item.yOffset}`}
+                className={`group relative shrink-0 overflow-hidden rounded-[2.5rem] border border-[#A6D5F7]/20 bg-[#FFFFFF] shadow-[0_20px_50px_rgba(166,213,247,0.5)] ${item.width} ${item.height} ${item.yOffset}`}
                 whileHover={{ scale: 1.05, y: -10, zIndex: 50 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
               >
                 {/* Premium Golden Inner Frame */}
-                <div className="absolute inset-4 z-20 rounded-[1.8rem] border border-[#C9A227]/30 transition-all duration-500 group-hover:border-[#C9A227]/80 group-hover:scale-[0.98]" />
+                <div className="absolute inset-4 z-20 rounded-[1.8rem] border border-[#A6D5F7]/30 transition-all duration-500 group-hover:border-[#A6D5F7]/80 group-hover:scale-[0.98]" />
 
                 {/* Image Element */}
                 <Image
@@ -109,7 +111,7 @@ export default function GallerySection() {
                 />
 
                 {/* Romantic Dark Gradient Overlay */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#1a0408]/80 via-[#1a0408]/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-40" />
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#FFFFFF]/80 via-[#FFFFFF]/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-40" />
 
                 {/* Shimmer Effect */}
                 <motion.div
@@ -128,7 +130,7 @@ export default function GallerySection() {
           initial={{ opacity: 0, y: 15 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.3 }}
-          className="font-serif text-xl italic text-[#f5e6c8]/60 md:text-2xl"
+          className="font-serif text-xl italic text-[#000000] md:text-2xl"
         >
           Some moments are too beautiful for words.
         </motion.p>

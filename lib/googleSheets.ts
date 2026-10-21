@@ -4,7 +4,9 @@ interface SubmitPayload {
   formType: GoogleSheetFormType;
   name: string;
   guests?: string;
+  meal?: string;
   dietary?: string;
+  table?: string;
   message?: string;
 }
 

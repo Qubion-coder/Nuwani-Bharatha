@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { HEADING_CLASS, UnderlinedWord } from '@/components/UnderlinedWord';
 import { Heart, Stars, Sparkles, BookHeart, PartyPopper, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const storyItems = [
@@ -10,24 +11,24 @@ const storyItems = [
     id: 0,
     chapter: "Chapter I",
     title: "How We Met",
-    subtitle: "2012",
-    content: "We met in 2012, 14 years ago. What began as friendship slowly grew into deep love, trust, and a lifelong bond.",
+    subtitle: "Where It Began",
+    content: "What began as a simple hello slowly grew into deep love, trust, and a lifelong bond.",
     icon: Stars,
-    color: "#ff4d6d",
-    gradient: "from-[#ff4d6d]/10 to-[#ffb3c1]/20",
-    accentBg: "bg-[#ff4d6d]",
-    tag: "2012",
+    color: "#F7D6DE",
+    gradient: "from-[#F7D6DE] via-[#F7D6DE]/80 to-[#A6D5F7]/70",
+    accentBg: "bg-[#F7D6DE]",
+    tag: "Beginning",
   },
   {
     id: 1,
     chapter: "Chapter II",
     title: "Years Together",
-    subtitle: "14 Years of Love",
+    subtitle: "Growing Together",
     content: "Over the years, we supported each other through every season of life. Today, with grateful hearts, we are ready to begin our forever as husband and wife.",
     icon: BookHeart,
-    color: "#c084fc",
-    gradient: "from-[#c084fc]/10 to-[#e9d5ff]/20",
-    accentBg: "bg-[#c084fc]",
+    color: "#A6D5F7",
+    gradient: "from-[#A6D5F7] via-[#A6D5F7]/80 to-[#CDEDE1]/80",
+    accentBg: "bg-[#A6D5F7]",
     tag: "Journey",
   },
   {
@@ -37,9 +38,9 @@ const storyItems = [
     subtitle: "A Sacred Yes",
     content: "With prayer and joy, we said yes to this new chapter. Your love and blessings make this day even more meaningful.",
     icon: Camera,
-    color: "#f59e42",
-    gradient: "from-[#f59e42]/10 to-[#fde68a]/20",
-    accentBg: "bg-[#f59e42]",
+    color: "#CDEDE1",
+    gradient: "from-[#CDEDE1] via-[#CDEDE1]/80 to-[#F7D6DE]/80",
+    accentBg: "bg-[#CDEDE1]",
     tag: "Promise",
   },
   {
@@ -49,9 +50,9 @@ const storyItems = [
     subtitle: "Our Wedding Day",
     content: "Now we celebrate our wedding day with the people we love. Thank you for being part of our story.",
     icon: PartyPopper,
-    color: "#10b981",
-    gradient: "from-[#10b981]/10 to-[#a7f3d0]/20",
-    accentBg: "bg-[#10b981]",
+    color: "#F7D6DE",
+    gradient: "from-[#F7D6DE] via-[#A6D5F7]/80 to-[#CDEDE1]",
+    accentBg: "bg-[#F7D6DE]",
     tag: "Forever",
   },
 ];
@@ -81,21 +82,32 @@ export default function StorySection() {
   return (
     <section
       ref={ref}
-      className="relative px-4 sm:px-6 lg:px-8 py-16 md:py-20 overflow-hidden bg-[#faf7f2]"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 md:py-20 overflow-hidden bg-[#FFFFFF]"
       style={{ minHeight: 'auto' }}
     >
       {/* ── Subtle background texture ── */}
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #ff8fa3 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, #F7D6DE 1px, transparent 1px)`,
           backgroundSize: '36px 36px',
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#faf7f2] via-transparent to-[#faf7f2] pointer-events-none" />
+      <AnimatePresence>
+        <motion.div
+          key={`tint-${active}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `linear-gradient(180deg, #FFFFFF 0%, ${storyItems[active].color} 100%)` }}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-transparent to-transparent pointer-events-none" />
 
       {/* Decorative watermark shape */}
-      <div className="absolute bottom-0 right-0 h-48 w-48 select-none rounded-full bg-[radial-gradient(circle,rgba(255,143,163,0.22),transparent_72%)] opacity-40 blur-sm md:h-72 md:w-72 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 h-48 w-48 select-none rounded-full bg-[radial-gradient(circle,rgba(247,214,222,0.22),transparent_72%)] opacity-40 blur-sm md:h-72 md:w-72 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
 
@@ -107,18 +119,12 @@ export default function StorySection() {
           className="text-center mb-10 md:mb-12"
         >
           <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md border-2 border-white shadow-md rounded-full px-5 py-2 mb-5">
-            <Heart className="w-4 h-4 text-[#ff8fa3] fill-[#ff8fa3]" />
-            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#ff8fa3]">Our Love Story</span>
-            <Heart className="w-4 h-4 text-[#ff8fa3] fill-[#ff8fa3]" />
+            <Heart className="w-4 h-4 text-[#000000] fill-[#F7D6DE]" />
+            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#000000]">Our Love Story</span>
+            <Heart className="w-4 h-4 text-[#000000] fill-[#F7D6DE]" />
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#4a3b3c] leading-tight">
-            Written in the{' '}
-            <span className="italic text-[#ff4d6d] relative inline-block">
-              Stars
-              <svg className="absolute -bottom-1 left-0 w-full" viewBox="0 0 100 8" preserveAspectRatio="none">
-                <path d="M0 6 Q25 2 50 6 Q75 10 100 6" stroke="#ff8fa3" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-              </svg>
-            </span>
+          <h2 className={HEADING_CLASS}>
+            Written in the <UnderlinedWord inView={inView}>Stars</UnderlinedWord>
           </h2>
         </motion.div>
 
@@ -137,17 +143,18 @@ export default function StorySection() {
                 key={s.id}
                 onClick={() => go(i)}
                 className={`group relative flex items-center gap-3 rounded-2xl px-3 py-3 text-left transition-all duration-300 border-2 ${active === i
-                  ? 'bg-white shadow-lg border-white scale-105'
+                  ? 'shadow-lg border-white scale-105'
                   : 'bg-white/50 border-transparent hover:bg-white/70'
                   }`}
+                style={active === i ? { backgroundColor: s.color } : undefined}
               >
                 <div
                   className="w-2 h-2 rounded-full shrink-0 transition-all"
-                  style={{ backgroundColor: active === i ? s.color : '#d1a0aa' }}
+                  style={{ backgroundColor: active === i ? '#FFFFFF' : '#A6D5F7' }}
                 />
                 <div>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#c0a0a8]">{s.chapter}</p>
-                  <p className={`text-[11px] font-semibold leading-tight transition-colors ${active === i ? 'text-[#4a3b3c]' : 'text-[#9a7a7e]'}`}>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#000000]">{s.chapter}</p>
+                  <p className={`text-[11px] font-semibold leading-tight transition-colors ${active === i ? 'text-[#000000]' : 'text-[#000000]'}`}>
                     {s.title}
                   </p>
                 </div>
@@ -156,7 +163,7 @@ export default function StorySection() {
           </div>
 
           {/* ── Center: Main Story Card ── */}
-          <div className="relative flex-1 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-white shadow-[0_20px_60px_rgba(255,143,163,0.18)] border-2 border-white min-h-[340px] md:min-h-[380px]">
+          <div className="relative flex-1 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-white shadow-[0_20px_60px_rgba(247,214,222,0.18)] border-2 border-white min-h-[340px] md:min-h-[380px]">
 
             {/* Gradient layer behind content */}
             <AnimatePresence custom={dir} mode="wait">
@@ -188,21 +195,21 @@ export default function StorySection() {
                   {/* Top row */}
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#c0a0a8]">{item.chapter}</span>
-                      <h3 className="font-serif text-3xl md:text-4xl text-[#4a3b3c] mt-1 leading-tight">{item.title}</h3>
-                      <p className="text-sm font-semibold text-[#9a7a7e] mt-1">{item.subtitle}</p>
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#000000]">{item.chapter}</span>
+                      <h3 className="font-serif text-3xl md:text-4xl text-[#000000] mt-1 leading-tight">{item.title}</h3>
+                      <p className="text-sm font-semibold text-[#000000] mt-1">{item.subtitle}</p>
                     </div>
                     {/* Icon bubble */}
                     <div
                       className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center shadow-lg"
-                      style={{ backgroundColor: `${item.color}18`, border: `2px solid ${item.color}30` }}
+                      style={{ backgroundColor: '#FFFFFF', border: `3px solid ${item.color}` }}
                     >
-                      <Icon className="w-7 h-7 md:w-8 md:h-8" style={{ color: item.color }} />
+                      <Icon className="w-7 h-7 md:w-8 md:h-8" style={{ color: '#000000' }} />
                     </div>
                   </div>
 
                   {/* Story text */}
-                  <p className="text-[#6e5457] text-base md:text-lg leading-relaxed font-medium flex-1 flex items-center">
+                  <p className="text-[#000000] text-base md:text-lg leading-relaxed font-medium flex-1 flex items-center">
                     {item.content}
                   </p>
 
@@ -220,7 +227,7 @@ export default function StorySection() {
                             style={{
                               width: active === i ? 24 : 8,
                               height: 8,
-                              backgroundColor: active === i ? item.color : '#e8d5d8',
+                              backgroundColor: active === i ? item.color : '#F7D6DE',
                             }}
                           />
                         </button>
@@ -229,7 +236,7 @@ export default function StorySection() {
 
                     {/* Tag pill */}
                     <span
-                      className="text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full text-white shadow-sm"
+                      className="text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full text-[#000000] shadow-sm"
                       style={{ backgroundColor: item.color }}
                     >
                       {item.tag}
@@ -244,13 +251,13 @@ export default function StorySection() {
               onClick={prev}
               className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full items-center justify-center shadow-md border border-white/80 transition-all hover:scale-110"
             >
-              <ChevronLeft className="w-5 h-5 text-[#4a3b3c]" />
+              <ChevronLeft className="w-5 h-5 text-[#000000]" />
             </button>
             <button
               onClick={next}
               className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full items-center justify-center shadow-md border border-white/80 transition-all hover:scale-110"
             >
-              <ChevronRight className="w-5 h-5 text-[#4a3b3c]" />
+              <ChevronRight className="w-5 h-5 text-[#000000]" />
             </button>
           </div>
 
@@ -268,17 +275,17 @@ export default function StorySection() {
                 {/* Big icon */}
                 <div
                   className="w-20 h-20 rounded-[1.5rem] flex items-center justify-center shadow-xl"
-                  style={{ backgroundColor: `${item.color}15`, border: `3px solid ${item.color}30` }}
+                  style={{ backgroundColor: '#FFFFFF', border: `4px solid ${item.color}` }}
                 >
-                  <Icon className="w-10 h-10" style={{ color: item.color }} />
+                  <Icon className="w-10 h-10" style={{ color: '#000000' }} />
                 </div>
 
                 {/* Progress fraction */}
                 <div className="text-center">
-                  <p className="text-3xl font-serif font-bold" style={{ color: item.color }}>
+                  <p className="text-3xl font-serif font-bold" style={{ color: '#000000' }}>
                     {String(active + 1).padStart(2, '0')}
                   </p>
-                  <p className="text-xs text-[#c0a0a8] font-semibold">
+                  <p className="text-xs text-[#000000] font-semibold">
                     /{String(storyItems.length).padStart(2, '0')}
                   </p>
                 </div>
@@ -291,7 +298,7 @@ export default function StorySection() {
                       className="w-1 rounded-full transition-all duration-500"
                       style={{
                         height: active === i ? 28 : 8,
-                        backgroundColor: active === i ? item.color : '#e8d5d8',
+                        backgroundColor: active === i ? item.color : '#F7D6DE',
                       }}
                     />
                   ))}
@@ -310,7 +317,7 @@ export default function StorySection() {
               onClick={prev}
               className="w-11 h-11 bg-white hover:bg-white/90 rounded-full flex items-center justify-center shadow-md border border-white/80 transition-all active:scale-95"
             >
-              <ChevronLeft className="w-5 h-5 text-[#4a3b3c]" />
+              <ChevronLeft className="w-5 h-5 text-[#000000]" />
             </button>
             {/* Dot indicators */}
             <div className="flex items-center gap-1.5">
@@ -321,7 +328,7 @@ export default function StorySection() {
                     style={{
                       width: active === i ? 20 : 7,
                       height: 7,
-                      backgroundColor: active === i ? item.color : '#e8d5d8',
+                      backgroundColor: active === i ? item.color : '#F7D6DE',
                     }}
                   />
                 </button>
@@ -331,7 +338,7 @@ export default function StorySection() {
               onClick={next}
               className="w-11 h-11 bg-white hover:bg-white/90 rounded-full flex items-center justify-center shadow-md border border-white/80 transition-all active:scale-95"
             >
-              <ChevronRight className="w-5 h-5 text-[#4a3b3c]" />
+              <ChevronRight className="w-5 h-5 text-[#000000]" />
             </button>
           </div>
 
@@ -342,9 +349,10 @@ export default function StorySection() {
                 key={s.id}
                 onClick={() => go(i)}
                 className={`text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full transition-all duration-300 border-2 ${active === i
-                  ? 'bg-white border-white shadow-md text-[#4a3b3c] scale-105'
-                  : 'bg-white/50 border-transparent text-[#9a7a7e]'
+                  ? 'border-white shadow-md text-[#000000] scale-105'
+                  : 'bg-white/50 border-transparent text-[#000000]'
                   }`}
+                style={active === i ? { backgroundColor: s.color } : undefined}
               >
                 {s.chapter}
               </button>

@@ -3,46 +3,48 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Premium Sri Lankan Kandyan Wedding Theme */
+/* Pastel Wedding Theme - Sky Blue / Mint / Baby Pink with White & black text */
 :root {
-  /* Primary Colors - Royal Maroon & Gold */
-  --maroon-dark: #7A1E1E;
-  --maroon-light: #A82C2C;
-  --gold-primary: #C9A227;
-  --gold-accent: #D4AF37;
-  --ivory: #F5E6C8;
-  --cream: #FAF6F0;
+  --sky: #A6D5F7;
+  --sky-deep: #A6D5F7;
+  --mint: #CDEDE1;
+  --mint-deep: #CDEDE1;
+  --pink: #F7D6DE;
+  --pink-deep: #F7D6DE;
+  --silver: #A6D5F7;
+  --silver-deep: #A6D5F7;
+  --ink: #000000;
+  --ink-soft: #000000;
   --white: #FFFFFF;
-  --text-dark: #1A1A1A;
-  --text-muted: #6B6B6B;
-  --border-light: #E8DCC8;
-  
+  --cream: #FFFFFF;
+
   /* Design System */
   --background: var(--cream);
-  --foreground: var(--text-dark);
+  --foreground: var(--ink);
   --card: var(--white);
-  --card-foreground: var(--text-dark);
-  --popover: var(--ivory);
-  --popover-foreground: var(--text-dark);
-  --primary: var(--maroon-dark);
+  --card-foreground: var(--ink);
+  --popover: var(--white);
+  --popover-foreground: var(--ink);
+  --primary: var(--sky-deep);
   --primary-foreground: var(--white);
-  --secondary: var(--gold-primary);
-  --secondary-foreground: var(--text-dark);
-  --muted: var(--text-muted);
-  --muted-foreground: var(--ivory);
-  --accent: var(--maroon-light);
-  --accent-foreground: var(--white);
-  --destructive: #DC2626;
+  --secondary: var(--pink);
+  --secondary-foreground: var(--ink);
+  --muted: var(--ink-soft);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--mint);
+  --accent-foreground: var(--ink);
+  --destructive: #000000;
   --destructive-foreground: var(--white);
-  --border: var(--border-light);
+  --border: #F7D6DE;
   --input: var(--white);
-  --ring: var(--gold-primary);
+  --ring: var(--sky-deep);
   --radius: 0.5rem;
 }
 
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback';
   --font-serif: 'Playfair Display', 'Playfair Display Fallback';
+  --font-script: var(--font-script-face), cursive;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -134,19 +136,19 @@
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+    box-shadow: 0 0 15px rgba(166, 213, 247, 0.5);
   }
   50% {
-    box-shadow: 0 0 30px rgba(201, 162, 39, 0.7);
+    box-shadow: 0 0 30px rgba(166, 213, 247, 0.85);
   }
 }
 
 @keyframes glow-maroon {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(122, 30, 30, 0.3);
+    box-shadow: 0 0 15px rgba(247, 214, 222, 0.5);
   }
   50% {
-    box-shadow: 0 0 30px rgba(122, 30, 30, 0.5);
+    box-shadow: 0 0 30px rgba(247, 214, 222, 0.85);
   }
 }
 

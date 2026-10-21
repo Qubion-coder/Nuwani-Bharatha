@@ -16,14 +16,16 @@ function doPost(e) {
       }
 
       if (rsvpSheet.getLastRow() === 0) {
-        rsvpSheet.appendRow(['submittedAt', 'name', 'guests', 'dietary', 'source']);
+        rsvpSheet.appendRow(['submittedAt', 'name', 'guests', 'meal', 'dietary', 'table', 'source']);
       }
 
       rsvpSheet.appendRow([
         submittedAt,
         payload.name || '',
         payload.guests || '',
+        payload.meal || '',
         payload.dietary || '',
+        payload.table || '',
         payload.source || 'website',
       ]);
     } else if (formType === 'wish') {
