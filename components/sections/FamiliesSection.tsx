@@ -1,10 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { HEADING_CLASS, UnderlinedWord } from '@/components/UnderlinedWord';
 import { HeartFlourish } from '@/components/icons/WeddingIcons';
-import { COUPLE, PARENTS } from '@/lib/wedding';
+import { COUPLE, PARENTS, PHOTOS } from '@/lib/wedding';
 
 const sides = [
   {
@@ -13,7 +14,8 @@ const sides = [
     name: COUPLE.brideFull,
     relation: 'Beloved daughter of',
     parents: PARENTS.bride,
-    tint: 'from-[#F7D6DE]/70 to-white',
+    photo: PHOTOS.bride,
+    tint: 'from-[#F7D6DE] via-[#F7D6DE]/80',
     accent: '#000000',
   },
   {
@@ -22,7 +24,8 @@ const sides = [
     name: COUPLE.groomFull,
     relation: 'Beloved son of',
     parents: PARENTS.groom,
-    tint: 'from-[#A6D5F7]/55 to-white',
+    photo: PHOTOS.groom,
+    tint: 'from-[#A6D5F7] via-[#A6D5F7]/80',
     accent: '#000000',
   },
 ];
@@ -48,9 +51,8 @@ export default function FamiliesSection() {
           transition={{ duration: 0.8 }}
           className="mb-12 text-center md:mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#000000]">Together with their families</p>
-          <h2 className={`mt-3 ${HEADING_CLASS}`}>
-            Our <UnderlinedWord inView={inView}>Families</UnderlinedWord>
+          <h2 className={HEADING_CLASS}>
+            Together with Our <UnderlinedWord inView={inView}>Families</UnderlinedWord>
           </h2>
           <HeartFlourish className="mx-auto mt-8 h-6 w-48 text-[#000000]" />
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#000000]">
@@ -65,9 +67,13 @@ export default function FamiliesSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 + i * 0.15 }}
-              className={`relative overflow-hidden rounded-[2rem] border border-[#F7D6DE] bg-gradient-to-br ${side.tint} p-8 text-center shadow-[0_18px_50px_rgba(166,213,247,0.08)] md:p-10`}
+              className="relative flex min-h-[520px] flex-col justify-end overflow-hidden rounded-[2rem] border border-[#F7D6DE] p-8 text-center shadow-[0_18px_50px_rgba(166,213,247,0.08)] md:min-h-[600px] md:p-10"
             >
+              {/* Portrait fills the card; a pastel fade at the bottom keeps the text readable */}
+              <Image src={side.photo} alt={side.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
+              <div className={`absolute inset-0 bg-gradient-to-t ${side.tint} to-transparent to-[65%]`} />
               <div className="pointer-events-none absolute inset-3 rounded-[1.6rem] border border-white/90" />
+              <div className="relative z-10">
               <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: side.accent }}>
                 {side.role}
               </p>
@@ -75,6 +81,7 @@ export default function FamiliesSection() {
               <HeartFlourish className="mx-auto my-5 h-5 w-32" style={{ color: side.accent }} />
               <p className="text-xs uppercase tracking-[0.2em] text-[#000000]">{side.relation}</p>
               <p className="mt-3 font-serif text-lg leading-relaxed text-[#000000] md:text-xl">{side.parents}</p>
+              </div>
             </motion.div>
           ))}
         </div>

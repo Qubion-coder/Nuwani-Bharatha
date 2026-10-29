@@ -39,7 +39,7 @@ export default function HeroSection() {
     >
       {/* Couple photo as the background, with a slow gentle zoom */}
       <motion.div
-        className="absolute inset-x-0 top-0 h-[58svh] md:inset-0 md:h-auto"
+        className="absolute inset-0"
         initial={{ scale: 1.08 }}
         animate={{ scale: [1.08, 1, 1.08] }}
         transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
@@ -54,14 +54,14 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Pastel veils: clear over the couple, soft behind the text */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_36%,rgba(255,255,255,0.9)_56%,rgba(247,214,222,0.95)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.1)_35%,rgba(255,255,255,0.82)_58%,rgba(247,214,222,0.9)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(166,213,247,0.55),transparent_55%)]" />
+      {/* Pastel veils: photo stays visible edge to edge, with a light wash behind the text */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_40%,rgba(255,255,255,0.55)_62%,rgba(247,214,222,0.75)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_40%,rgba(255,255,255,0.5)_62%,rgba(247,214,222,0.65)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(166,213,247,0.3),transparent_55%)]" />
 
       {/* Soft pastel glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-32 top-1/3 h-[28rem] w-[28rem] rounded-full bg-[#CDEDE1] opacity-60 blur-[110px]" />
-        <div className="absolute -right-24 -top-24 h-[24rem] w-[24rem] rounded-full bg-[#FFFFFF] opacity-80 blur-[90px]" />
+        <div className="absolute -left-32 top-1/3 h-[28rem] w-[28rem] rounded-full bg-[#CDEDE1] opacity-30 blur-[110px]" />
+        <div className="absolute -right-24 -top-24 h-[24rem] w-[24rem] rounded-full bg-[#FFFFFF] opacity-40 blur-[90px]" />
       </div>
 
       {/* Drifting petals */}
@@ -110,7 +110,7 @@ export default function HeroSection() {
             Together with their families
           </motion.p>
 
-          <motion.h1 {...reveal(inView, 0.5, 30)} className="mt-3 font-script text-6xl leading-[1.05] text-[#000000] sm:text-7xl md:mt-3 md:text-7xl lg:text-8xl">
+          <motion.h1 {...reveal(inView, 0.5, 30)} className="mt-3 font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl md:mt-3 md:text-7xl lg:text-8xl">
             {COUPLE.bride}
           </motion.h1>
           <motion.div {...reveal(inView, 0.6)} className="my-1 flex items-center gap-4">
@@ -118,7 +118,7 @@ export default function HeroSection() {
             <span className="font-serif text-2xl italic text-[#000000] md:text-3xl">&amp;</span>
             <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#000000]/50" />
           </motion.div>
-          <motion.h1 {...reveal(inView, 0.7, 30)} className="font-script text-6xl leading-[1.05] text-[#000000] sm:text-7xl md:text-7xl lg:text-8xl">
+          <motion.h1 {...reveal(inView, 0.7, 30)} className="font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl md:text-7xl lg:text-8xl">
             {COUPLE.groom}
           </motion.h1>
 

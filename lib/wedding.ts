@@ -26,15 +26,17 @@ const mapEmbed = (query: string) =>
 export const VENUES = {
   church: {
     name: "St. Anthony's Church",
-    area: 'Kollupitiya (Colpetty)',
+    area: 'Colpetty',
     mapUrl: mapSearch("St. Anthony's Church Kollupitiya Colombo 03"),
     embedUrl: mapEmbed("St. Anthony's Church Kollupitiya Colombo 03"),
+    photo: encodeURI('/Screenshot 2026-10-29 214020.png'),
   },
   hotel: {
     name: 'Cinnamon Grand Colombo',
     area: 'Oak Hall',
     mapUrl: mapSearch('Cinnamon Grand Colombo'),
     embedUrl: mapEmbed('Cinnamon Grand Colombo'),
+    photo: encodeURI('/Screenshot 2026-10-29 214136.png'),
   },
 };
 
@@ -44,7 +46,7 @@ export const SCHEDULE = [
     title: 'Holy Matrimony',
     time: '8:15 AM',
     venue: "St. Anthony's Church",
-    place: 'Kollupitiya',
+    place: 'Colpetty',
     note: 'Wedding ceremony',
     mapUrl: VENUES.church.mapUrl,
   },
@@ -69,8 +71,8 @@ export const SCHEDULE = [
 ];
 
 export const CONTACTS = [
-  { name: 'Nuwani', phone: '0704645846', intl: '94704645846' },
-  { name: 'Bharatha', phone: '0710190719', intl: '94710190719' },
+  { name: "Groom's Dad - Pushpakeerthi", phone: '0712568196', intl: '94712568196' },
+  { name: 'Bride - Nuwani', phone: '0704645846', intl: '94704645846' },
 ];
 
 // Pastel palette (Baby Pink / Mint Green / Sky Blue with white & silver)
@@ -81,16 +83,19 @@ export const PALETTE = {
   silver: '#C3CBD5',
 };
 
-// Preshoot photos in /public/pre (encoded because the filenames contain spaces)
+// Preshoot photos in /public/pre (encoded in case a filename contains spaces)
 const pre = (file: string) => encodeURI(`/pre/${file}`);
 export const PHOTOS = {
-  hero: pre('WhatsApp Image 2026-10-16 at 07.28.03 (1).jpeg'),
-  ceremony: pre('WhatsApp Image 2026-10-16 at 07.28.03.jpeg'),
+  hero: pre('RAM02075.jpg.jpeg'),
+  ceremony: pre('RAM02038.jpg.jpeg'),
+  bride: '/IMG_6150.JPG.jpeg',
+  groom: '/IMG_6173.JPG.jpeg',
   gallery: [
-    pre('WhatsApp Image 2026-10-16 at 07.28.03 (1).jpeg'),
-    pre('WhatsApp Image 2026-10-16 at 07.28.03 (2).jpeg'),
-    pre('WhatsApp Image 2026-10-16 at 07.28.03.jpeg'),
-    pre('WhatsApp Image 2026-10-16 at 07.28.04 (1).jpeg'),
-    pre('WhatsApp Image 2026-10-16 at 07.28.04.jpeg'),
+    pre('RAM01314.jpg.jpeg'),
+    pre('RAM01382.jpg.jpeg'),
+    pre('RAM01805.jpg.jpeg'),
+    pre('RAM02015.jpg.jpeg'),
+    pre('RAM02520.jpg.jpeg'),
+    pre('RAM02812.jpg.jpeg'),
   ],
 };

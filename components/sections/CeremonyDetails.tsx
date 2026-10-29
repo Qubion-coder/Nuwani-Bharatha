@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { HEADING_CLASS, UnderlinedWord } from '@/components/UnderlinedWord';
 import { Clock3, Heart } from 'lucide-react';
-import { ChurchIcon, PoruwaIcon, RingsIcon, VenuePinIcon, OrnateCrossIcon } from '@/components/icons/WeddingIcons';
+import { ChurchIcon, PoruwaIcon, RingsIcon, VenuePinIcon } from '@/components/icons/WeddingIcons';
 import Image from 'next/image';
 import { PHOTOS } from '@/lib/wedding';
 
@@ -23,7 +23,7 @@ export default function CeremonyDetails() {
       timeValue: '8:15 AM',
       timeSub: 'Holy wedding ceremony',
       venueLabel: 'Church Venue',
-      venueValue: "St. Anthony's Church - Kollupitiya",
+      venueValue: "St. Anthony's Church - Colpetty",
       venueSub: 'Live location available',
     },
     {
@@ -84,17 +84,13 @@ export default function CeremonyDetails() {
                 sizes="(max-width: 768px) 100vw, 500px"
               />
 
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(255,255,255,0.85)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_40%,rgba(255,255,255,0.75)_70%,rgba(255,255,255,0.9)_100%)]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(166,213,247,0.22),transparent_48%)]" />
               <div className="absolute inset-0 opacity-[0.14]"
                 style={{ backgroundImage: 'linear-gradient(rgba(166,213,247,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(166,213,247,0.55) 1px, transparent 1px)', backgroundSize: '38px 38px' }} />
 
-              <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 text-center text-[#000000]">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#F7D6DE]/40 bg-white/60 px-4 py-1.5 backdrop-blur-sm">
-                  <OrnateCrossIcon className="h-4 w-4 text-[#000000]" />
-                  <p className="text-[10px] uppercase tracking-[0.32em] text-[#000000] drop-shadow-[0_2px_10px_rgba(255,255,255,0.65)]">Blessed Union</p>
-                </div>
-                <h3 className="mt-5 font-serif text-4xl text-[#000000] drop-shadow-[0_4px_16px_rgba(255,255,255,0.75)]">
+              <div className="relative z-10 flex h-full flex-col items-center justify-end px-8 pb-10 text-center md:pb-12 text-[#000000]">
+                <h3 className="font-serif text-4xl text-[#000000] drop-shadow-[0_4px_16px_rgba(255,255,255,0.75)]">
                   NUWANI <span className="text-[#000000]">&amp;</span> BHARATHA
                 </h3>
                 <p className="mt-4 text-sm leading-7 text-[#000000]">
@@ -215,7 +211,7 @@ export default function CeremonyDetails() {
                 <span className="w-6 h-[1px] bg-[#A6D5F7]"></span> Guest Notes
               </h4>
               <div className="space-y-2">
-                <p className="text-[#000000] text-sm md:text-base"><span className="text-[#000000]">Church:</span> Ceremony begins at 8:15 AM at St. Anthony's Church, Kollupitiya</p>
+                <p className="text-[#000000] text-sm md:text-base"><span className="text-[#000000]">Church:</span> Ceremony begins at 8:15 AM at St. Anthony's Church, Colpetty</p>
                 <p className="text-[#000000] text-sm md:text-base"><span className="text-[#000000]">Poruwa &amp; Reception:</span> 9:45 AM &amp; 10:15 AM at Cinnamon Grand Colombo - Oak Hall</p>
               </div>
             </motion.div>

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Background song: Shania Twain - "You're Still The One"
-const SONG_SRC = encodeURI('/Shania Twain - Youre Still The One (Official Music Video).mp3');
+const SONG_SRC = encodeURI('/Shania Twain - Youre Still The One (Official Music Video) (mp3cut.net).mp3');
 // Played instead if the file above is missing.
 const FALLBACK_SRC = '/paulyudin-wedding-485932.mp3';
 
@@ -32,6 +32,8 @@ export default function MusicPlayer() {
         });
         audioRef.current = audio;
 
+        let cleanupListeners = () => { };
+
         // Attempt autoplay
         const playAudio = () => {
             audio.play()
@@ -41,32 +43,37 @@ export default function MusicPlayer() {
                 })
                 .catch(() => {
                     setShowHint(true);
-                    // Add interaction listeners if autoplay is blocked
+                    // Autoplay was blocked: start from the beginning on the first tap.
+                    // Only these events count as a user gesture, so keep listening until play succeeds.
                     const startOnInteraction = () => {
+                        if (isPlayingRef.current) return removeListeners();
+                        audio.currentTime = 0;
                         audio.play()
                             .then(() => {
                                 setIsPlaying(true);
                                 setShowHint(false);
+                                removeListeners();
                             })
                             .catch(() => { });
-                        removeListeners();
                     };
 
                     const removeListeners = () => {
-                        ['click', 'touchstart', 'scroll'].forEach((evt) =>
-                            document.removeEventListener(evt, startOnInteraction)
+                        ['click', 'touchend', 'keydown'].forEach((evt) =>
+                            document.removeEventListener(evt, startOnInteraction, true)
                         );
                     };
 
-                    ['click', 'touchstart', 'scroll'].forEach((evt) =>
-                        document.addEventListener(evt, startOnInteraction, { once: true, passive: true })
+                    ['click', 'touchend', 'keydown'].forEach((evt) =>
+                        document.addEventListener(evt, startOnInteraction, { capture: true, passive: true })
                     );
+                    cleanupListeners = removeListeners;
                 });
         };
 
         playAudio();
 
         return () => {
+            cleanupListeners();
             audio.pause();
             audio.src = '';
         };

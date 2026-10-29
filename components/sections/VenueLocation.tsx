@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { HEADING_CLASS, UnderlinedWord } from '@/components/UnderlinedWord';
@@ -14,10 +15,11 @@ const venueCards = [
     label: 'Holy Matrimony',
     time: '8:15 AM',
     name: "St. Anthony's Church",
-    place: 'Kollupitiya',
-    address: 'Galle Road, Kollupitiya, Colombo 03',
+    place: 'Colpetty',
+    address: 'Galle Road, Colpetty, Colombo 03',
     mapUrl: VENUES.church.mapUrl,
     embedUrl: VENUES.church.embedUrl,
+    photo: VENUES.church.photo,
     tint: 'from-[#A6D5F7] to-[#FFFFFF]',
     ring: 'border-[#A6D5F7]',
   },
@@ -31,6 +33,7 @@ const venueCards = [
     address: '77 Galle Road, Colombo 03',
     mapUrl: VENUES.hotel.mapUrl,
     embedUrl: VENUES.hotel.embedUrl,
+    photo: VENUES.hotel.photo,
     tint: 'from-[#F7D6DE] to-[#FFFFFF]',
     ring: 'border-[#F7D6DE]',
   },
@@ -97,10 +100,14 @@ export default function VenueLocation() {
                   whileHover={{ y: -6 }}
                   className="overflow-hidden rounded-[2rem] border border-[#FFFFFF] bg-[#FFFFFF] shadow-[0_18px_50px_rgba(166,213,247,0.35)]"
                 >
-                  <div className={`relative bg-gradient-to-b ${venue.tint} px-6 pb-6 pt-8 text-center md:px-8`}>
-                    <span className="absolute left-5 top-5 rounded-full bg-[#FFFFFF] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#000000]">
+                  <div className="relative h-[220px] w-full sm:h-[280px]">
+                    <Image src={venue.photo} alt={venue.name} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+                    <span className="absolute left-5 top-5 rounded-full bg-[#FFFFFF] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#000000] shadow-md">
                       {String(index + 1).padStart(2, '0')}
                     </span>
+                  </div>
+
+                  <div className={`relative bg-gradient-to-b ${venue.tint} px-6 pb-6 pt-8 text-center md:px-8`}>
                     <div className={`mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 ${venue.ring} bg-[#FFFFFF] shadow-[0_10px_25px_rgba(166,213,247,0.35)]`}>
                       <Icon className="h-11 w-11 text-[#000000]" />
                     </div>

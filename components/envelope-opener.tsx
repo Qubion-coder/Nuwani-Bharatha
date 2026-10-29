@@ -109,8 +109,8 @@ export function EnvelopeOpener({ onEnvelopeOpen }: EnvelopeOpenerProps) {
               className="object-cover object-center"
             />
 
-            <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 pb-[18%] text-center">
-              <motion.div {...fadeUp(0.05)} className="relative mb-4 h-24 w-24 sm:h-28 sm:w-28">
+            <div className="relative z-10 flex h-full flex-col items-center justify-center-safe overflow-y-auto px-8 pb-32 pt-6 text-center [@media(min-height:800px)]:pb-[18%]">
+              <motion.div {...fadeUp(0.05)} className="relative mb-4 h-24 w-24 shrink-0 sm:h-28 sm:w-28 [@media(max-height:740px)]:mb-2 [@media(max-height:740px)]:h-16 [@media(max-height:740px)]:w-16">
                 <Image src="/logo.png" alt="Nuwani & Bharatha monogram" fill priority sizes="112px" className="object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.9)]" />
               </motion.div>
               <motion.p {...fadeUp(0.2)} className="font-serif text-xs uppercase tracking-[0.3em] text-[#000000] sm:text-sm">
@@ -119,26 +119,26 @@ export function EnvelopeOpener({ onEnvelopeOpen }: EnvelopeOpenerProps) {
 
               <motion.h1
                 {...fadeUp(0.4)}
-                className="mt-6 font-script text-6xl leading-[1.05] text-[#000000] sm:text-7xl"
+                className="mt-6 font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl [@media(max-height:740px)]:mt-3 [@media(max-height:740px)]:text-5xl"
               >
                 {COUPLE.bride}
               </motion.h1>
-              <motion.p {...fadeUp(0.55)} className="my-1 font-script text-6xl leading-none text-[#000000] sm:text-7xl">
+              <motion.p {...fadeUp(0.55)} className="my-1 font-script text-6xl leading-none text-[#000000] sm:text-7xl [@media(max-height:740px)]:text-5xl">
                 &amp;
               </motion.p>
               <motion.h1
                 {...fadeUp(0.7)}
-                className="font-script text-6xl leading-[1.05] text-[#000000] sm:text-7xl"
+                className="font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl [@media(max-height:740px)]:text-5xl"
               >
                 {COUPLE.groom}
               </motion.h1>
 
-              <motion.p {...fadeUp(0.9)} className="mt-10 font-serif text-lg tracking-[0.35em] text-[#000000] sm:text-xl">
+              <motion.p {...fadeUp(0.9)} className="mt-10 font-serif text-lg tracking-[0.35em] [@media(max-height:740px)]:mt-5 text-[#000000] sm:text-xl">
                 11 . 12 . 2026
               </motion.p>
 
               {guest.name && (
-                <motion.p {...fadeUp(1.0)} className="mt-6 font-serif text-sm italic text-[#000000]">
+                <motion.p {...fadeUp(1.0)} className="mt-6 font-serif text-sm italic text-[#000000] [@media(max-height:740px)]:mt-3">
                   Dear {guest.name}
                 </motion.p>
               )}
@@ -149,7 +149,7 @@ export function EnvelopeOpener({ onEnvelopeOpen }: EnvelopeOpenerProps) {
                 onClick={handleOpen}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative mt-10 overflow-hidden border border-[#000000]/70 bg-[#FFFFFF]/55 px-10 py-3.5 font-serif text-xs uppercase tracking-[0.3em] text-[#000000] shadow-[0_10px_30px_rgba(247,214,222,0.6)] backdrop-blur-sm transition-colors hover:bg-[#F7D6DE]/70"
+                className="group relative mt-10 shrink-0 overflow-hidden [@media(max-height:740px)]:mt-6 border border-[#000000]/70 bg-[#FFFFFF]/55 px-10 py-3.5 font-serif text-xs uppercase tracking-[0.3em] text-[#000000] shadow-[0_10px_30px_rgba(247,214,222,0.6)] backdrop-blur-sm transition-colors hover:bg-[#F7D6DE]/70"
               >
                 <span className="relative z-10">Open Invitation</span>
                 <motion.span

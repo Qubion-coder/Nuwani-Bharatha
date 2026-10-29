@@ -2,11 +2,9 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Heart, MapPin, Phone } from 'lucide-react';
+import { Heart, Phone } from 'lucide-react';
 import { RingsIcon } from '@/components/icons/WeddingIcons';
-import { CONTACTS, VENUES } from '@/lib/wedding';
-
-const LIVE_LOCATION_URL = VENUES.church.mapUrl;
+import { CONTACTS } from '@/lib/wedding';
 
 export default function FooterSection() {
   return (
@@ -42,15 +40,6 @@ export default function FooterSection() {
             <p className="mx-auto max-w-xl text-sm font-light leading-relaxed text-[#000000]">
               We look forward to sharing our joy and celebrating our union surrounded by the people we love most.
             </p>
-            <a
-              href={LIVE_LOCATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 self-center rounded-full border border-[#A6D5F7]/45 bg-white/70 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#000000] transition-colors hover:bg-[#A6D5F7]/10"
-            >
-              <MapPin className="h-4 w-4" />
-              St. Anthony's Church - Kollupitiya
-            </a>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               {CONTACTS.map((contact) => (
                 <a

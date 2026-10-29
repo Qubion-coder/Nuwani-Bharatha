@@ -23,7 +23,7 @@ const pinyonScript = Pinyon_Script({
 
 export const metadata: Metadata = {
   title: 'Nuwani & Bharatha Wedding',
-  description: 'Join us as we celebrate the wedding of Nuwani and Bharatha on 11th December 2026 at St. Anthony\'s Church, Kollupitiya and Cinnamon Grand Colombo.',
+  description: 'Join us as we celebrate the wedding of Nuwani and Bharatha on 11th December 2026 at St. Anthony\'s Church, Colpetty and Cinnamon Grand Colombo.',
   generator: 'v0.app',
   icons: {
     icon: '/logo.png',

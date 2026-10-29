@@ -14,7 +14,7 @@ const galleryItems = [
   { src: PHOTOS.gallery[2], width: 'w-[200px] sm:w-[280px] md:w-[420px]', height: 'h-[380px] md:h-[550px]', yOffset: '-translate-y-8' },
   { src: PHOTOS.gallery[3], width: 'w-[170px] sm:w-[240px] md:w-[340px]', height: 'h-[320px] md:h-[480px]', yOffset: 'translate-y-6' },
   { src: PHOTOS.gallery[4], width: 'w-[210px] sm:w-[300px] md:w-[440px]', height: 'h-[400px] md:h-[580px]', yOffset: '-translate-y-12' },
-  { src: PHOTOS.gallery[1], width: 'w-[180px] sm:w-[250px] md:w-[380px]', height: 'h-[360px] md:h-[500px]', yOffset: 'translate-y-4' },
+  { src: PHOTOS.gallery[5], width: 'w-[180px] sm:w-[250px] md:w-[380px]', height: 'h-[360px] md:h-[500px]', yOffset: 'translate-y-4' },
 ];
 
 // Duplicate items multiple times to ensure a seamless infinite scroll
