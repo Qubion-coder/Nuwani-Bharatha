@@ -94,7 +94,7 @@ export default function MusicPlayer() {
     if (!mounted) return null;
 
     return (
-        <div className="fixed bottom-6 right-6 z-[1000] flex flex-col items-end gap-3 pointer-events-none">
+        <div className="fixed bottom-6 right-6 z-[1000] flex items-center gap-3 pointer-events-none">
             {/* Tap hint badge */}
             <AnimatePresence>
                 {showHint && !isPlaying && (
@@ -102,7 +102,7 @@ export default function MusicPlayer() {
                         initial={{ opacity: 0, x: 20, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         exit={{ opacity: 0, x: 20, scale: 0.8 }}
-                        className="bg-white/90 backdrop-blur-md border border-[#A6D5F7] rounded-full px-4 py-2 shadow-xl flex items-center gap-2 mb-2"
+                        className="bg-white/90 backdrop-blur-md border border-[#A6D5F7] rounded-full px-4 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap"
                         
                     >
                         <motion.span
