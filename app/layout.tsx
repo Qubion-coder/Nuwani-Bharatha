@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Playfair_Display, Inter, Pinyon_Script } from 'next/font/google'
+import { Playfair_Display, Inter, Pinyon_Script, Allura } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import './enhancements.css'
@@ -21,7 +21,31 @@ const pinyonScript = Pinyon_Script({
   variable: '--font-script-face'
 })
 
+const allura = Allura({
+  subsets: ["latin"],
+  weight: '400',
+  variable: '--font-names-face'
+})
+
+const SITE_URL = 'https://nuwani-bharatha-weddinginvitation.vercel.app'
+const SHARE_DESCRIPTION = 'Join us as we celebrate our wedding on 11th December 2026 · St. Anthony\'s Church, Colpetty & Cinnamon Grand Colombo.'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+    siteName: 'Nuwani & Bharatha Wedding',
+    title: 'Nuwani & Bharatha · Wedding Invitation',
+    description: SHARE_DESCRIPTION,
+    images: [{ url: '/og-image.png', alt: 'Nuwani & Bharatha wedding invitation' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nuwani & Bharatha · Wedding Invitation',
+    description: SHARE_DESCRIPTION,
+    images: ['/og-image.png'],
+  },
   title: 'Nuwani & Bharatha Wedding',
   description: 'Join us as we celebrate the wedding of Nuwani and Bharatha on 11th December 2026 at St. Anthony\'s Church, Colpetty and Cinnamon Grand Colombo.',
   generator: 'v0.app',
@@ -44,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable} ${pinyonScript.variable}`}>
+    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable} ${pinyonScript.variable} ${allura.variable}`}>
       <body className="font-sans antialiased">
         {children}
         <Analytics />

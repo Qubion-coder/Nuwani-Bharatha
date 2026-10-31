@@ -87,12 +87,12 @@ export const PALETTE = {
 const pre = (file: string) => encodeURI(`/pre/${file}`);
 export const PHOTOS = {
   hero: pre('RAM02075.jpg.jpeg'),
-  ceremony: pre('RAM02038.jpg.jpeg'),
+  ceremony: pre('RAM01382.jpg.jpeg'),
   bride: '/IMG_6150.JPG.jpeg',
   groom: '/IMG_6173.JPG.jpeg',
   gallery: [
     pre('RAM01314.jpg.jpeg'),
-    pre('RAM01382.jpg.jpeg'),
+    pre('RAM02038.jpg.jpeg'),
     pre('RAM01805.jpg.jpeg'),
     pre('RAM02015.jpg.jpeg'),
     pre('RAM02520.jpg.jpeg'),

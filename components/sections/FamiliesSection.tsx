@@ -80,7 +80,13 @@ export default function FamiliesSection() {
               <h3 className="mt-3 font-script text-5xl leading-tight text-[#000000]">{side.name}</h3>
               <HeartFlourish className="mx-auto my-5 h-5 w-32" style={{ color: side.accent }} />
               <p className="text-xs uppercase tracking-[0.2em] text-[#000000]">{side.relation}</p>
-              <p className="mt-3 font-serif text-lg leading-relaxed text-[#000000] md:text-xl">{side.parents}</p>
+              <p className="mt-3 font-serif text-lg leading-relaxed text-[#000000] md:text-xl">
+                {side.parents.split(' & ').map((parent, j, all) => (
+                  <span key={parent} className="block">
+                    {parent}{j < all.length - 1 && ' &'}
+                  </span>
+                ))}
+              </p>
               </div>
             </motion.div>
           ))}

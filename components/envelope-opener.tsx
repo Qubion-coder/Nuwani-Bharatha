@@ -119,16 +119,16 @@ export function EnvelopeOpener({ onEnvelopeOpen }: EnvelopeOpenerProps) {
 
               <motion.h1
                 {...fadeUp(0.4)}
-                className="mt-6 font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl [@media(max-height:740px)]:mt-3 [@media(max-height:740px)]:text-5xl"
+                className="mt-6 font-names text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl [@media(max-height:740px)]:mt-3 [@media(max-height:740px)]:text-5xl"
               >
                 {COUPLE.bride}
               </motion.h1>
-              <motion.p {...fadeUp(0.55)} className="my-1 font-script text-6xl leading-none text-[#000000] sm:text-7xl [@media(max-height:740px)]:text-5xl">
+              <motion.p {...fadeUp(0.55)} className="my-1 font-names text-6xl leading-none text-[#000000] sm:text-7xl [@media(max-height:740px)]:text-5xl">
                 &amp;
               </motion.p>
               <motion.h1
                 {...fadeUp(0.7)}
-                className="font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl [@media(max-height:740px)]:text-5xl"
+                className="font-names text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl [@media(max-height:740px)]:text-5xl"
               >
                 {COUPLE.groom}
               </motion.h1>
@@ -138,8 +138,10 @@ export function EnvelopeOpener({ onEnvelopeOpen }: EnvelopeOpenerProps) {
               </motion.p>
 
               {guest.name && (
-                <motion.p {...fadeUp(1.0)} className="mt-6 font-serif text-sm italic text-[#000000] [@media(max-height:740px)]:mt-3">
-                  Dear {guest.name}
+                <motion.p {...fadeUp(1.0)} className="mt-6 max-w-xs font-serif text-sm italic leading-relaxed text-[#000000] [@media(max-height:740px)]:mt-3">
+                  We cordially invite{' '}
+                  <span className="not-italic font-semibold tracking-wide">{guest.name}</span>{' '}
+                  to celebrate our special day with us.
                 </motion.p>
               )}
 

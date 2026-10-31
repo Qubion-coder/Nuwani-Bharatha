@@ -9,7 +9,7 @@ import { WEDDING_DATE_LABEL } from '@/lib/wedding';
 
 const events = [
   { time: '8.15 AM', title: 'Church Ceremony', icon: Church, tint: '#A6D5F7' },
-  { time: '9.50 AM', title: 'Poruwa Ceremony', icon: Sparkles, tint: '#F7D6DE' },
+  { time: '9.45 AM', title: 'Poruwa Ceremony', icon: Sparkles, tint: '#F7D6DE' },
   { time: '10.15 AM', title: 'Reception', icon: Wine, tint: '#CDEDE1' },
   { time: '12.30 PM', title: 'Lunch', icon: Utensils, tint: '#A6D5F7' },
   { time: '3.30 PM', title: 'End of the Ceremony', icon: Car, tint: '#F7D6DE' },

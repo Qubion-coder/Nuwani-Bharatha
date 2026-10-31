@@ -79,7 +79,7 @@ export default function CeremonyDetails() {
                 src={PHOTOS.ceremony}
                 alt="Nuwani and Bharatha"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 priority
                 sizes="(max-width: 768px) 100vw, 500px"
               />

@@ -110,7 +110,7 @@ export default function HeroSection() {
             Together with their families
           </motion.p>
 
-          <motion.h1 {...reveal(inView, 0.5, 30)} className="mt-3 font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl md:mt-3 md:text-7xl lg:text-8xl">
+          <motion.h1 {...reveal(inView, 0.5, 30)} className="mt-3 font-names text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl md:mt-3 md:text-7xl lg:text-8xl">
             {COUPLE.bride}
           </motion.h1>
           <motion.div {...reveal(inView, 0.6)} className="my-1 flex items-center gap-4">
@@ -118,7 +118,7 @@ export default function HeroSection() {
             <span className="font-serif text-2xl italic text-[#000000] md:text-3xl">&amp;</span>
             <span className="h-px w-14 bg-gradient-to-l from-transparent to-[#000000]/50" />
           </motion.div>
-          <motion.h1 {...reveal(inView, 0.7, 30)} className="font-script text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl md:text-7xl lg:text-8xl">
+          <motion.h1 {...reveal(inView, 0.7, 30)} className="font-names text-6xl leading-[1.3] pt-2 text-[#000000] sm:text-7xl md:text-7xl lg:text-8xl">
             {COUPLE.groom}
           </motion.h1>
 
@@ -139,7 +139,9 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.p {...reveal(inView, 1.1)} className="mt-4 text-[10px] uppercase tracking-[0.2em] text-[#000000] md:mt-5 md:text-xs md:tracking-[0.22em]">
-            St. Anthony&apos;s Church · Cinnamon Grand Colombo
+            St. Anthony&apos;s Church Colpetty
+            <br />
+            Cinnamon Grand Colombo
           </motion.p>
 
           <motion.div {...reveal(inView, 1.2)} className="mt-6 hidden md:block">
