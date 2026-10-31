@@ -61,7 +61,7 @@ export default function RSVPSection() {
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
-        setFormData(emptyForm);
+        setFormData({ ...emptyForm, name: guest.name });
       }, 4000);
     } catch (error) {
       setSubmitError('Unable to submit right now. Please try again.');

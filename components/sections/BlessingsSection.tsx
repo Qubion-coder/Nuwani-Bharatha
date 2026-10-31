@@ -1,12 +1,13 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { HEADING_CLASS, UnderlinedWord } from '@/components/UnderlinedWord';
 import { Heart, PenLine, Send, Stars, UserRound, Sparkles, Quote } from 'lucide-react';
 import { QuillIcon } from '@/components/icons/WeddingIcons';
 import { submitToGoogleSheets } from '@/lib/googleSheets';
+import { useGuest } from '@/hooks/use-guest';
 
 interface Blessing {
   id: string;
@@ -19,6 +20,7 @@ const initialBlessings: Blessing[] = [];
 
 export default function BlessingsSection() {
   const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
+  const guest = useGuest();
 
   const [blessings, setBlessings] = useState<Blessing[]>(initialBlessings);
   const [newBlessing, setNewBlessing] = useState('');
@@ -27,6 +29,11 @@ export default function BlessingsSection() {
   const [isHoveringSend, setIsHoveringSend] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  // Pre-fill the name from the personalised invite link
+  useEffect(() => {
+    if (guest.name) setVisitorName((prev) => prev || guest.name);
+  }, [guest.name]);
 
   const floatingParticles = useMemo(
     () =>
@@ -63,7 +70,7 @@ export default function BlessingsSection() {
 
         setBlessings([blessing, ...blessings]);
         setNewBlessing('');
-        setVisitorName('');
+        setVisitorName(guest.name);
         setSubmitted(true);
 
         setTimeout(() => setSubmitted(false), 3000);
