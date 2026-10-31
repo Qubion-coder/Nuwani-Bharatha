@@ -240,7 +240,7 @@ export default function RSVPSection() {
                         >
                           <option value="1">1 Guest (Just Me)</option>
                           <option value="2">2 Guests (Couple)</option>
-                          <option value="3">3 Guests (Plus One)</option>
+                          <option value="3">3 Guests (Family)</option>
                           <option value="4">4 Guests (Family)</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-5 flex items-center text-[#000000]">
