@@ -14,8 +14,10 @@ export function buildDisplayName(prefix: Prefix, guestName: string): string {
   return `${prefix} ${name}`;
 }
 
-export function buildInviteLink(baseUrl: string, displayName: string): string {
-  return `${baseUrl.replace(/\/+$/, '')}/${encodeURIComponent(displayName)}`;
+export function buildInviteLink(baseUrl: string, displayName: string, table = ''): string {
+  const link = `${baseUrl.replace(/\/+$/, '')}/${encodeURIComponent(displayName)}`;
+  const tableNo = table.trim();
+  return tableNo ? `${link}?table=${encodeURIComponent(tableNo)}` : link;
 }
 
 export function buildInviteMessage(displayName: string, link: string): string {

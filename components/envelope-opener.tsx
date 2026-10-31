@@ -145,6 +145,12 @@ export function EnvelopeOpener({ onEnvelopeOpen }: EnvelopeOpenerProps) {
                 </motion.p>
               )}
 
+              {guest.table && (
+                <motion.p {...fadeUp(1.05)} className="mt-3 text-[11px] uppercase tracking-[0.3em] text-[#000000] [@media(max-height:740px)]:mt-2">
+                  Table <span className="font-serif text-base tracking-normal">{guest.table}</span>
+                </motion.p>
+              )}
+
               <motion.button
                 {...fadeUp(1.1)}
                 type="button"

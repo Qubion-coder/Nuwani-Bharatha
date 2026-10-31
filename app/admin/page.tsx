@@ -18,7 +18,8 @@ const buttonClass =
 export default function AdminPage() {
   const [prefix, setPrefix] = useState<Prefix>('Mr.');
   const [guestName, setGuestName] = useState('');
-  const [generated, setGenerated] = useState<{ displayName: string; link: string; message: string } | null>(null);
+  const [table, setTable] = useState('');
+  const [generated, setGenerated] = useState<{ displayName: string; table: string; link: string; message: string } | null>(null);
   const [notice, setNotice] = useState('');
   const noticeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -37,8 +38,8 @@ export default function AdminPage() {
       showNotice('Please enter a guest name');
       return;
     }
-    const link = buildInviteLink(window.location.origin, displayName);
-    setGenerated({ displayName, link, message: buildInviteMessage(displayName, link) });
+    const link = buildInviteLink(window.location.origin, displayName, table);
+    setGenerated({ displayName, table: table.trim(), link, message: buildInviteMessage(displayName, link) });
   };
 
   const copy = async (text: string, success: string) => {
@@ -98,6 +99,22 @@ export default function AdminPage() {
             />
           </div>
 
+          <div>
+            <label htmlFor="table" className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em]">
+              Table Number <span className="font-normal normal-case tracking-normal opacity-60">(optional)</span>
+            </label>
+            <input
+              id="table"
+              type="text"
+              inputMode="numeric"
+              value={table}
+              onChange={(e) => setTable(e.target.value)}
+              placeholder="e.g. 5"
+              autoComplete="off"
+              className={fieldClass}
+            />
+          </div>
+
           <button type="submit" className={`${buttonClass} w-full bg-[#000000] text-white hover:bg-[#000000]/85`}>
             Generate Link
           </button>
@@ -109,6 +126,7 @@ export default function AdminPage() {
             <p className="mt-2 font-serif text-xl">
               {generated ? `Dear ${generated.displayName} ❤️` : '—'}
             </p>
+            {generated?.table && <p className="mt-1 text-sm">Table {generated.table}</p>}
           </div>
 
           <div>
