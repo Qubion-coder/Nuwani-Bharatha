@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: 'Nuwani & Bharatha Wedding',
     title: 'Nuwani & Bharatha · Wedding Invitation',
     description: SHARE_DESCRIPTION,
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Nuwani & Bharatha wedding invitation' }],
+    images: [{ url: '/og-image.jpg', width: 557, height: 762, alt: 'Nuwani & Bharatha wedding invitation' }],
   },
   twitter: {
     card: 'summary_large_image',
